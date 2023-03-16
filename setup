@@ -1,0 +1,27 @@
+Install Git on EC2
+sudo yum install git -y
+
+Install Ansible on EC2
+sudo amazon-linux-extras install ansible2
+
+Install Docker on EC2
+sudo yum update
+sudo yum search docker
+sudo yum info docker
+sudo yum install docker
+sudo usermod -a -G docker jenkins
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+
+Install Java & Jenkins on EC2
+sudo yum update –y
+sudo wget -O /etc/yum.repos.d/jenkins.repo \https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum upgrade
+sudo amazon-linux-extras install java-openjdk11 -y
+sudo yum install jenkins -y
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+
+Get jenkins password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
